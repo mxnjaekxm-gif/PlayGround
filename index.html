@@ -3,46 +3,47 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
-  <meta name="theme-color" content="#a9d8bd" />
-  <title>Meadowmere — A Little Open-World Adventure</title>
+  <meta name="theme-color" content="#080d16" />
+  <title>VOID//RUN — Shard Protocol</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&family=Nunito:wght@700;800;900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700;800;900&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Cpath fill='%2343e4dd' d='M50 0 100 50 50 100 0 50Z'/%3E%3C/svg%3E" />
   <link rel="stylesheet" href="style.css" />
 </head>
 <body>
   <main class="game-shell">
-    <canvas id="world" aria-label="Meadowmere open world game"></canvas>
+    <canvas id="world" aria-label="VOID//RUN 3D open-world game"></canvas>
     <div class="vignette"></div>
 
     <header class="topbar">
-      <a class="brand" href="#" aria-label="Meadowmere home"><span class="brand-mark">✿</span><span>meadow<span class="brand-light">mere</span></span></a>
-      <div class="location"><span class="location-pin">⌖</span><span id="location-name">Whispering Meadow</span></div>
+      <a class="brand" href="#" aria-label="VOID//RUN home"><span class="brand-mark">◈</span><span>VOID<span class="brand-light">//RUN</span></span></a>
+      <div class="location"><span class="location-pin">⌖</span><span id="location-name">ABANDONED GRID</span></div>
       <button class="icon-button sound-button" id="sound-toggle" aria-label="Toggle sound">♫</button>
     </header>
 
-    <section class="quest-card" aria-label="Adventure quest">
-      <div class="quest-heading"><span class="quest-icon">✦</span><span>YOUR LITTLE ADVENTURE</span><span class="quest-live"><i></i> LIVE</span></div>
-      <h1 id="quest-title">The lost starlight</h1>
-      <p id="quest-copy">The meadow's little stars have wandered off. Can you find them?</p>
+    <section class="quest-card" aria-label="Mission objective">
+      <div class="quest-heading"><span class="quest-icon">✦</span><span>SHARD PROTOCOL</span><span class="quest-live"><i></i> ACTIVE</span></div>
+      <h1 id="quest-title">Signal recovery</h1>
+      <p id="quest-copy">Recover five signal shards from the abandoned grid.</p>
       <div class="progress-row"><div class="progress-track"><div id="progress-fill"></div></div><span id="progress-count">0 / 5</span></div>
-      <div class="petal-row" id="petal-row" aria-label="Starlight collected"><span>✦</span><span>✦</span><span>✦</span><span>✦</span><span>✦</span></div>
-      <div class="quest-footer"><span class="tiny-spark">✧</span> Follow the golden glow</div>
+      <div class="petal-row" id="petal-row" aria-label="Signal shards collected"><span>✦</span><span>✦</span><span>✦</span><span>✦</span><span>✦</span></div>
+      <div class="quest-footer"><span class="tiny-spark">⌁</span> Follow the corrupted grid
     </section>
 
-    <div class="buddy-card" id="buddy-card"><span class="buddy-avatar">🐸</span><div><strong id="buddy-name">Pip says...</strong><span id="buddy-line">The whole meadow is yours to explore!</span></div><button id="buddy-close" aria-label="Dismiss">×</button></div>
+    <div class="buddy-card" id="buddy-card"><span class="buddy-avatar">◈</span><div><strong id="buddy-name">MISSION CONTROL</strong><span id="buddy-line">Recover all five shards and reach extraction.</span></div><button id="buddy-close" aria-label="Dismiss">×</button></div>
 
-    <div class="interaction" id="interaction"><span class="keycap">E</span><span id="interaction-label">Talk</span></div>
+    <div class="interaction" id="interaction"><span class="keycap">E</span><span id="interaction-label">INTERACT</span></div>
 
     <aside class="map-card" aria-label="Map">
-      <div class="map-title"><span>YOUR MAP</span><span class="map-compass">N ↑</span></div>
+      <div class="map-title"><span>TACTICAL MAP</span><span class="map-compass">N ↑</span></div>
       <canvas id="minimap" width="180" height="136"></canvas>
-      <div class="map-legend"><i class="legend-you"></i> you <i class="legend-star">✦</i> starlight</div>
+      <div class="map-legend"><i class="legend-you"></i> unit <i class="legend-star">✦</i> shard</div>
     </aside>
 
-    <div class="toast" id="toast"><span>✦</span><span id="toast-text">A little starlight!</span></div>
+    <div class="toast" id="toast"><span>✦</span><span id="toast-text">SIGNAL SHARD RECOVERED</span></div>
 
-    <div class="bottom-hint"><span class="desktop-hint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd><span>to wander</span><b>·</b><kbd>E</kbd><span>to chat</span></span><span class="mobile-hint">Drag the little pad to wander</span></div>
+    <div class="bottom-hint"><span class="desktop-hint"><kbd>W</kbd><kbd>A</kbd><kbd>S</kbd><kbd>D</kbd> or <kbd>↑</kbd><kbd>←</kbd><kbd>↓</kbd><kbd>→</kbd><span>move</span><b>·</b><kbd>E</kbd><span>interact</span></span><span class="mobile-hint">Use the pad to move · tap E to interact</span></div>
 
     <div class="touch-controls" aria-label="Touch movement controls">
       <div class="joystick" id="joystick"><div class="joy-knob" id="joy-knob"></div></div>
@@ -51,19 +52,19 @@
 
     <div class="start-screen" id="start-screen">
       <div class="start-card">
-        <div class="start-art"><div class="sun-halo"></div><span class="art-flower flower-a">✿</span><span class="art-flower flower-b">✿</span><span class="art-bunny">🐰</span><span class="art-sparkle">✦</span><span class="art-butterfly">✧</span></div>
-        <span class="eyebrow">A LITTLE WORLD TO GET LOST IN</span>
-        <h2>Welcome to<br><em>Meadowmere</em></h2>
-        <p>A cozy open-world adventure, just for you.<br>Wander, make friends, find the lost starlight.</p>
-        <button class="play-button" id="play-button">Let’s wander <span>→</span></button>
-        <span class="start-note">No rush. The meadow will wait. ♡</span>
+        <div class="start-art" aria-hidden="true"><div class="sun-halo"></div><span class="art-flower flower-a">///</span><span class="art-flower flower-b">01</span><span class="art-bunny">◈</span><span class="art-sparkle">+</span><span class="art-butterfly">⌖</span></div>
+        <span class="eyebrow">RECOVERY OPERATION // 01</span>
+        <h2>VOID<span class="slash">//</span><br><em>RUN</em></h2>
+        <p>Five signal shards. One extraction point.<br>The grid is dead. Keep moving.</p>
+        <button class="play-button" id="play-button">Initiate run <span>→</span></button>
+        <span class="start-note">WASD / ARROWS TO MOVE · E TO INTERACT</span>
       </div>
     </div>
 
     <div class="win-screen hidden" id="win-screen">
-      <div class="win-card"><span class="win-star">✦</span><span class="eyebrow">THE MEADOW SHINES AGAIN</span><h2>You found<br><em>every little star!</em></h2><p>The meadow feels a little brighter with you in it.</p><button class="play-button" id="keep-playing">Keep exploring <span>→</span></button></div>
+      <div class="win-card"><span class="win-star">✦</span><span class="eyebrow">EXTRACTION AUTHORIZED</span><h2>All shards<br><em>recovered.</em></h2><p>Signal restored. The grid is yours to explore.</p><button class="play-button" id="keep-playing">Continue run <span>→</span></button></div>
     </div>
   </main>
-  <script src="game.js"></script>
+  <script type="module" src="game.js"></script>
 </body>
 </html>
